@@ -1,0 +1,38 @@
+<div class="container">
+        <div class="row mt-4">
+            <div class="col-12">
+                <h2 class="text-center text-uppercase">{{user_name}} REPOS</h2>
+            </div>
+            <div class="col-6">
+                <a routerLink="/">Users</a>
+            </div>
+            <div class="col-6">
+                <div class="form-group float-right">
+                    <input type="text" class="form-control" id="name" placeholder="Search Repo Name" (ngModelChange)="getRepoName($event)" [(ngModel)]="repo_name">
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered mt-4">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Repo Name</th>
+                                <th scope="col">Repo URL</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let repo of Repos let i = index">
+                                <td style="width: 10%">{{ i +1}}</td>
+                                <td style="width: 25%">{{repo.name}}</td>
+                                <td style="width: 25%"><a href={{repo.html_url}} target=_blank>{{repo.html_url}}</a></td>
+                            </tr>
+                            <tr *ngIf="Repos.length == 0">
+                                <td colspan="4" class="text-center">No Data Available</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
